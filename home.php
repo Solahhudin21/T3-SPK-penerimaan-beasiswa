@@ -69,6 +69,9 @@ require "config.php";
         }
     ?>
 </div>
+    <div class="diagram-container">
+        <img src="diagram.png" hight="600" width="600" alt="diagram"  style="margin-right: 0px; margin-left: 50%; ">
+            </div>
 
     <script src="assets/js/jquery-3.7.0.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
