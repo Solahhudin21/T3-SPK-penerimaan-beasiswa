@@ -28,16 +28,14 @@ include "config.php"; ?>
     </style>
 </head>
 
-<body>
-
+<body background="background.png"> 
     <div class="container" style="margin-top: 100px;">
         <div class="row justify-content-center">
-
             <div class="col-md-9">
                 <h1 font-style="impact">LOGIN ADMIN</h1>
                 <h3 font-style="calibry">WEBSITE SISTEM PENDUKUNG KEPUTUSAN</h3>
                 <h5 font-style="calibry">Penerimaan Beasiswa STMIK ELRAHMA YOGYAKARTA</h5>
-                <h5>__________________________________________________________________</h5>
+                <h5>____________________________________________________________</h5>
                 <div class="login-container">
                     <div class="login-form">
                         <form method="post">
@@ -90,7 +88,7 @@ if (isset($_POST['login'])) {
     if ($hitung==1) {
 
 
-        // memasukan data admin kedalam session ,  mausk ke bioskop dengan membawa tiket 
+        // memasukan data admin kedalam session
       $_SESSION['admin'] = $ambil->fetch_assoc();
       echo '<script>alert("Login Success")</script>';  
       echo "<script>location='home.php'</script>";
