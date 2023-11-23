@@ -1,3 +1,14 @@
+<?php
+$sql = "SELECT COUNT(*) as jumlah, YEAR(tgldaftar) AS tahun FROM pendaftaran GROUP BY YEAR(tgldaftar)";
+$result = $conn->query($sql);
+
+// Fetch data from the database
+$chartData = [];
+while ($row = $result->fetch_assoc()) {
+    $chartData[$row['tahun']] = $row['jumlah'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,27 +66,33 @@
 
     <!-- Your script to create a chart -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Sample data
-            var data = {
-                labels: ['2019', '2020', '2021', '2023', '2024'],
-                datasets: [{
-                    label: 'tahun',
-                    backgroundColor: 'red(75, 192, 192, 0.2)',
-                    borderColor: 'red(75, 192, 192, 1)',
-                    data: [1, 1, 1, 1, 2],
-                }],
-            };
+    document.addEventListener('DOMContentLoaded', function () {
+        // PHP-generated data
+        var chartData = <?php echo json_encode($chartData); ?>;
 
-            // Get the context of the canvas element we want to select
-            var ctx = document.getElementById('myChart').getContext('2d');
+        // Transform PHP data into Chart.js format
+        var labels = Object.keys(chartData);
+        var data = Object.values(chartData);
 
-            // Create a chart
-            var myChart = new Chart(ctx, {
-                type: 'bar',
+        var chartData = {
+            labels: labels,
+            datasets: [{
+                label: 'Jumlah',
+                backgroundColor: 'red(75, 192, 192, 0.2)',
+                borderColor: 'red(75, 192, 192, 1)',
                 data: data,
-            });
+            }],
+        };
+
+        // Get the context of the canvas element we want to select
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        // Create a chart
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
         });
-    </script>
+    });
+</script>
 </body>
 </html>
