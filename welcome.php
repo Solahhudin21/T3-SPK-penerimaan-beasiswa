@@ -1,9 +1,3 @@
-<h1 align="center">SELAMAT DATANG PESERTA SELEKSI BEASISWA</h1>
-<!-- <h3 align="center"></h3> -->
-<h3 align="center">STMIK EL RAHMA YOGYAKARTA</h3>
-
-
-
 <?php
 $sql = "SELECT COUNT(*) as jumlah, YEAR(tgldaftar) AS tahun FROM pendaftaran GROUP BY YEAR(tgldaftar)";
 $result = $conn->query($sql);
