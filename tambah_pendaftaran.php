@@ -44,7 +44,7 @@ if(isset($_POST['simpan'])){
                             <select class="form-control chosen" data-placeholder="Pilih Tahun" name="tahun">
                             <option value=""></option>
                             <?php
-                                for($x=date("Y");$x>=2015;$x--){
+                                for($x=date("Y");$x>=2021;$x--){
                             ?>
                                     <option value="<?php echo $x; ?>"><?php echo $x; ?></option>
                             <?php
